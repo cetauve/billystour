@@ -490,8 +490,54 @@
     .f-links a:hover { opacity: 1; }
     .f-copy { font-size: 11px; color: var(--muted); opacity: .28; text-align: right; }
 
+    /* ─── VERTICAL TIMELINE ──────────────────────────── */
+    .timeline-wrap { max-width: 1440px; margin: 0 auto; padding: 0 48px 100px; }
+    .tl-row { display: grid; grid-template-columns: 60px 1fr; gap: 0 20px; }
+    .tl-spine { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--dim); background: var(--bg); flex-shrink: 0; margin-top: 6px; }
+    .tl-dot.is-main { width: 18px; height: 18px; background: var(--red); border-color: var(--red); margin-top: 4px; }
+    .tl-connector { flex: 1; width: 2px; min-height: 32px; background: repeating-linear-gradient(to bottom, var(--dim) 0, var(--dim) 5px, transparent 5px, transparent 11px); }
+    .tl-mystery-row { display: grid; grid-template-columns: 60px 1fr; gap: 0 20px; align-items: center; padding: 8px 0; }
+    .tl-mystery-node { width: 56px; height: 56px; border-radius: 50%; border: 2px dashed var(--dim); display: flex; align-items: center; justify-content: center; font-family: var(--ff-h); font-size: 20px; color: var(--muted); }
+    .tl-mystery-info { font-size: 10px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+    .tl-card { display: grid; grid-template-columns: 1fr 1fr; min-height: 440px; background: var(--bg2); border: 1px solid var(--border); overflow: hidden; transition: border-color .25s; }
+    .tl-card:hover { border-color: var(--dim); }
+    .tl-photo { position: relative; overflow: hidden; }
+    .tl-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(15%) saturate(.9); transition: transform .7s, filter .4s; }
+    .tl-card:hover .tl-photo img { transform: scale(1.04); filter: grayscale(0%) saturate(1.05); }
+    .tl-body { padding: 48px 44px; display: flex; flex-direction: column; gap: 10px; }
+    .tl-top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .tl-edition { font-size: 9px; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--red); }
+    .tl-badge { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; padding: 3px 8px; }
+    .tl-badge.is-main { background: var(--red); color: var(--cream); }
+    .tl-badge.upcoming { border: 1px solid var(--border); color: var(--muted); }
+    .tl-badge.past { border: 1px solid var(--border); color: var(--muted); opacity: .5; }
+    .tl-city { font-family: var(--ff-h); font-size: clamp(38px, 4.5vw, 66px); line-height: 1.104; letter-spacing: -0.035em; text-transform: uppercase; }
+    .tl-date { font-size: 12px; font-weight: 600; letter-spacing: .06em; opacity: .5; }
+    .tl-venue { font-size: 12px; opacity: .35; font-style: italic; }
+    .tl-desc { font-size: 13px; line-height: 1.72; color: var(--muted); flex: 1; }
+    .tl-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--border); margin-top: auto; }
+    .tl-price { font-family: var(--ff-h); font-size: 32px; letter-spacing: -0.035em; line-height: 1; }
+    .tl-price small { font-family: var(--ff-b); font-size: 11px; font-weight: 500; opacity: .38; }
+    .tl-btn { border: 1px solid var(--bone); color: var(--bone); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; padding: 10px 20px; transition: background .2s, color .2s; }
+    .tl-btn:hover:not(:disabled) { background: var(--bone); color: var(--cream); }
+    .tl-btn:disabled { opacity: .22; cursor: not-allowed; }
+    .tl-past-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .tl-past-label { font-size: 10px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
+    .tl-past-row { display: grid; grid-template-columns: 52px 160px 1fr 1fr auto; gap: 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .tl-past-stop { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    .tl-past-city { font-family: var(--ff-h); font-size: 20px; letter-spacing: -0.035em; }
+    .tl-past-date { font-size: 11px; opacity: .5; }
+    .tl-past-venue { font-size: 11px; opacity: .35; font-style: italic; }
+    .tl-past-tag { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--border); color: var(--muted); padding: 3px 8px; }
+    .tl-empty { font-size: 13px; color: var(--muted); padding: 40px 0; }
+
     /* ─── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 960px) {
+      .tl-card { grid-template-columns: 1fr; min-height: auto; }
+      .tl-photo { min-height: 240px; }
+      .tl-past-row { grid-template-columns: 44px 1fr auto; }
+      .tl-past-date, .tl-past-venue { display: none; }
       .cd-section { grid-template-columns: 1fr; }
       .cd-photo { min-height: 320px; }
       .cd-photo-overlay { background: linear-gradient(to bottom, transparent 70%, var(--bg2) 100%); }
@@ -511,6 +557,8 @@
       .ticker-item { font-size: 14px; padding: 0 18px; }
       .cd-body { padding: 48px 24px; }
       .cd-num  { font-size: 42px; min-width: 56px; }
+      .timeline-wrap { padding-left: 20px; padding-right: 20px; }
+      .tl-row, .tl-mystery-row { grid-template-columns: 40px 1fr; }
       .ev-top, .ev-list { padding-left: 20px; padding-right: 20px; }
       .ev-body { padding: 32px 24px; }
       .tk-header, .tk-grid { padding-left: 20px; padding-right: 20px; }
@@ -670,7 +718,7 @@
       <div class="ev-filters">
         <button class="ev-filter active" onclick="filterEv('all',this)">All</button>
         <button class="ev-filter" onclick="filterEv('upcoming',this)">Upcoming</button>
-        <button class="ev-filter" onclick="filterEv('premium',this)">Premium</button>
+        <button class="ev-filter" onclick="filterEv('main',this)">Main Drops</button>
         <button class="ev-filter" onclick="filterEv('past',this)">Past</button>
       </div>
     </div>
@@ -749,10 +797,223 @@
   </div>
 
   <script>
-    /* ── Season data ─────────────────────────────────────────
-       34 stops · 24 cities · 8 premium drops
-       Prices: TBD. Clothing: always €10/piece.
-    ────────────────────────────────────────────────────────── */
+    /* ── CSV path & limits ───────────────────────────────── */
+    const CSV_PATH = './data/tour-data.csv';
+    const MAX_MAIN = 4;
+
+    /* ── Static UI data ──────────────────────────────────── */
+    const TICKER_SRC = [
+      'MÜNCHEN','BERLIN','AMSTERDAM','PARIS','MADRID','LISBOA','COPENHAGUE','MILÁN','HAMBURG','ROTTERDAM',
+      'VINTAGE LOVES CULTURE','CLOTHING €10 / PIECE','SEASON 26–27','34 STOPS · 24 CITIES','DJs · RAPPERS · COFFEE · VINTAGE FITS',
+    ];
+    const SLOGAN_WORDS = ['TECHNO','BERLIN','COFFEE',"YOUR DAD'S FIT",'THE UNDERGROUND','LOCAL ARTISTS','SECOND HAND','€10 FITS','THE CULTURE','RAPPERS'];
+    const STRIP_PHOTOS = [
+      {src:'./assets/ref-9.png',sideways:false},{src:'./assets/ref-5.png',sideways:false},
+      {src:'./assets/img-6499.jpeg',sideways:true},{src:'./assets/ref-14.png',sideways:false},
+      {src:'./assets/ref-1.png',sideways:false},{src:'./assets/img-6521.jpeg',sideways:true},
+      {src:'./assets/vintage-lover-girl.webp',sideways:false},{src:'./assets/ref-18.png',sideways:false},
+      {src:'./assets/img-6480.jpeg',sideways:true},{src:'./assets/screenshot-ref2.png',sideways:false},
+      {src:'./assets/sevenstore-look.webp',sideways:false},{src:'./assets/dj-billys-neon.png',sideways:false},
+      {src:'./assets/fur-coat-girl.png',sideways:false},{src:'./assets/vintage-market.png',sideways:false},
+    ];
+
+    /* ── Fallback if CSV fails ────────────────────────────── */
+    const SEASON_FALLBACK = [
+      {stop:'04',city:'AMSTERDAM',slug:'amsterdam',dates:'08 — 10 · MAY 2026',venue:'Westergas WUF',status:'main',past:'false',premium:'true',img:'ref-14.png',desc:"Europe's most beautiful industrial park. Live techno, vintage market, specialty coffee."},
+      {stop:'05',city:'ROTTERDAM',slug:'rotterdam',dates:'05 — 07 · JUN 2026',venue:'HAKA Gebouw',status:'secondary',past:'false',premium:'false',img:'ref-18.png',desc:'Brutal acoustics. Amsterdam\'s B-side — and the better one.'},
+      {stop:'07',city:'PARIS',slug:'paris',dates:'18 — 20 · JUL 2026',venue:'La Halle Parisienne',status:'main',past:'false',premium:'true',img:'screenshot-ref2.png',desc:"We bring vintage that doesn't cost a kidney, and artists you'll know before everyone else."},
+      {stop:'09',city:'MADRID',slug:'madrid',dates:'14 — 16 · AGO 2026',venue:'Nave de Terneras',status:'main',past:'false',premium:'true',img:'ref-1.png',desc:'The Iberian premium drop. Best vintage market of the season.'},
+      {stop:'11',city:'LISBOA',slug:'lisboa',dates:'04 — 06 · SEP 2026',venue:'LX Factory',status:'main',past:'false',premium:'true',img:'ref-9.png',desc:'LX Factory — the heart of Lisbon\'s cultural scene.'},
+    ];
+
+    /* ── CSV parser ───────────────────────────────────────── */
+    function parseCSVLine(line) {
+      const f=[]; let cur='',inQ=false;
+      for(let i=0;i<line.length;i++){
+        if(line[i]==='"'){if(inQ&&line[i+1]==='"'){cur+='"';i++;}else inQ=!inQ;}
+        else if(line[i]===','&&!inQ){f.push(cur);cur='';}
+        else cur+=line[i];
+      }
+      f.push(cur); return f;
+    }
+    async function loadCSV(url){
+      try{
+        const res=await fetch(url);
+        if(!res.ok) return null;
+        const rows=( await res.text()).trim().split('\n').filter(r=>r.trim());
+        const headers=rows[0].split(',').map(h=>h.trim());
+        return rows.slice(1).map(row=>{
+          const v=parseCSVLine(row);
+          return headers.reduce((o,h,i)=>{o[h]=(v[i]||'').trim();return o;},{});
+        });
+      }catch(e){console.warn('[CSV]',e);return null;}
+    }
+
+    /* ── Helpers ──────────────────────────────────────────── */
+    function bool(v){return String(v).toLowerCase()==='true';}
+    function tagLabel(ev){
+      if(bool(ev.past))    return {cls:'past',    txt:'Sold out'};
+      if(bool(ev.premium)) return {cls:'premium', txt:'Premium'};
+      return                      {cls:'upcoming', txt:'Upcoming'};
+    }
+
+    /* ── State ────────────────────────────────────────────── */
+    let curFilter='all', SEASON_DATA=[];
+
+    /* ── Routing ──────────────────────────────────────────── */
+    function go(id){
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(b=>b.classList.remove('active'));
+      document.getElementById('pg-'+id).classList.add('active');
+      document.getElementById('nb-'+id).classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    /* ── Ticker ───────────────────────────────────────────── */
+    document.getElementById('ticker').innerHTML=[...TICKER_SRC,...TICKER_SRC]
+      .map(w=>`<span class="ticker-item">${w}&nbsp;<span class="ticker-sep">·</span></span>`).join('');
+
+    /* ── Photo strip ──────────────────────────────────────── */
+    document.getElementById('photo-strip-inner').innerHTML=[...STRIP_PHOTOS,...STRIP_PHOTOS]
+      .map(p=>`<div class="photo-strip-item${p.sideways?' sideways':''}"><img src="${p.src}" alt="" loading="lazy"/></div>`).join('');
+
+    /* ── Slogan break ─────────────────────────────────────── */
+    const sp='VINTAGE LOVES <span class="accent">CULTURE</span> &nbsp;·&nbsp; VINTAGE LOVES <span class="accent">TECHNO</span> &nbsp;·&nbsp; VINTAGE LOVES <span class="accent">BERLIN</span> &nbsp;·&nbsp; VINTAGE LOVES <span class="accent">COFFEE</span> &nbsp;·&nbsp; VINTAGE LOVES <span class="accent">YOUR DAD\'S FIT</span> &nbsp;·&nbsp; VINTAGE LOVES <span class="accent">THE UNDERGROUND</span> &nbsp;·&nbsp; ';
+    document.getElementById('slogan-scroll').innerHTML=sp+sp;
+
+    /* ── Hero slogan rotation ─────────────────────────────── */
+    let si=0; const sel=document.getElementById('slogan-word');
+    setInterval(()=>{sel.style.opacity='0';setTimeout(()=>{si=(si+1)%SLOGAN_WORDS.length;sel.textContent=SLOGAN_WORDS[si];sel.style.opacity='1';},300);},2600);
+
+    /* ── Countdown ────────────────────────────────────────── */
+    const TARGET=new Date('2026-05-08T18:00:00');
+    function pad(n){return String(n).padStart(2,'0');}
+    function tick(){
+      const d=TARGET-Date.now();
+      if(d<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(id=>{document.getElementById(id).textContent='00';});return;}
+      document.getElementById('cd-d').textContent=pad(Math.floor(d/86400000));
+      document.getElementById('cd-h').textContent=pad(Math.floor(d%86400000/3600000));
+      document.getElementById('cd-m').textContent=pad(Math.floor(d%3600000/60000));
+      document.getElementById('cd-s').textContent=pad(Math.floor(d%60000/1000));
+    }
+    tick(); setInterval(tick,1000);
+
+    /* ── Hero carousel ────────────────────────────────────── */
+    const slides=document.querySelectorAll('.hero-slide'); let cs=0;
+    setInterval(()=>{slides[cs].classList.remove('active');cs=(cs+1)%slides.length;slides[cs].classList.add('active');},5000);
+
+    /* ── Timeline renderer ────────────────────────────────── */
+    function renderTimeline(data, filter){
+      const past=data.filter(e=>bool(e.past));
+      const upcoming=data.filter(e=>!bool(e.past)&&e.status!=='hidden');
+      const mains=upcoming.filter(e=>e.status==='main').slice(0,MAX_MAIN);
+      let html='<div class="timeline-wrap">';
+
+      if(filter!=='past'){
+        mains.forEach((ev,i)=>{
+          const nextMain=mains[i+1];
+          const ti=upcoming.indexOf(ev);
+          const ni=nextMain?upcoming.indexOf(nextMain):upcoming.length;
+          const between=upcoming.slice(ti+1,ni).filter(e=>e.status==='secondary').length;
+          const fb=`./assets/${ev.img}`;
+          html+=`
+      <div class="tl-row">
+        <div class="tl-spine"><div class="tl-dot is-main"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <div class="tl-card">
+            <div class="tl-photo"><img src="./assets/events/${ev.slug}/hero.jpg" alt="${ev.city}" loading="lazy" onerror="this.src='${fb}';this.onerror=null;"/></div>
+            <div class="tl-body">
+              <div class="tl-top-row">
+                <span class="tl-edition">Stop ${ev.stop} &nbsp;·&nbsp; 26–27</span>
+                <span class="tl-badge is-main">Main Drop</span>
+              </div>
+              <div class="tl-city">${ev.city}</div>
+              <div class="tl-date">${ev.dates}</div>
+              <div class="tl-venue">${ev.venue}</div>
+              <p class="tl-desc">${ev.desc}</p>
+              <div class="tl-foot">
+                <div class="tl-price">From: <small>TBD</small></div>
+                <button class="tl-btn" onclick="openModal('${ev.city.replace(/'/g,"\\'")}','${ev.dates}','${ev.venue}')">Get ticket →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+          if(nextMain) html+=`
+      <div class="tl-mystery-row">
+        <div class="tl-spine"><div class="tl-connector"></div><div class="tl-mystery-node"><span>?</span></div><div class="tl-connector"></div></div>
+        <div class="tl-mystery-info">${between>0?'+'+between+' more stop'+(between>1?'s':''):'TBD'}</div>
+      </div>`;
+        });
+        if(!mains.length) html+='<p class="tl-empty">No upcoming drops announced yet.</p>';
+      }
+
+      if((filter==='all'||filter==='past')&&past.length){
+        html+=`<div class="tl-past-section"><div class="tl-past-label">Past stops</div>
+        ${past.map(e=>`<div class="tl-past-row">
+          <span class="tl-past-stop">Stop ${e.stop}</span>
+          <span class="tl-past-city">${e.city}</span>
+          <span class="tl-past-date">${e.dates}</span>
+          <span class="tl-past-venue">${e.venue}</span>
+          <span class="tl-past-tag">Sold out</span>
+        </div>`).join('')}</div>`;
+      }
+
+      html+='</div>';
+      document.getElementById('ev-list').innerHTML=html;
+    }
+
+    function filterEv(f,btn){
+      curFilter=f;
+      document.querySelectorAll('.ev-filter').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      renderTimeline(SEASON_DATA,f);
+    }
+
+    /* ── Tickets renderer ─────────────────────────────────── */
+    function renderTickets(data){
+      document.getElementById('tk-grid').innerHTML=data.map(ev=>{
+        const tag=tagLabel(ev); const fb=`./assets/${ev.img}`;
+        return `<div class="tk-card${bool(ev.past)?' is-past':''}">
+          <div class="tk-img"><img src="./assets/events/${ev.slug}/hero.jpg" alt="${ev.city}" loading="lazy" onerror="this.src='${fb}';this.onerror=null;"/><div class="tk-img-overlay"></div></div>
+          <div class="tk-body">
+            <div class="tk-row-top"><div class="tk-ed">Stop ${ev.stop}</div><span class="tk-badge ${tag.cls}">${tag.txt}</span></div>
+            <div class="tk-city">${ev.city}</div>
+            <div class="tk-meta">
+              <div class="tk-row"><span class="tk-rk">Date</span><span class="tk-rv">${ev.dates}</span></div>
+              <div class="tk-row"><span class="tk-rk">Venue</span><span class="tk-rv">${ev.venue}</span></div>
+            </div>
+            <hr class="tk-hr"/>
+            <div class="tk-price-row"><div class="tk-price">From: <small>TBD</small></div></div>
+            <button class="tk-btn${bool(ev.premium)?' tk-premium-btn':''}" ${bool(ev.past)?'disabled':`onclick="openModal('${ev.city.replace(/'/g,"\\'")}','${ev.dates}','${ev.venue}')"`}>${bool(ev.past)?'Sold out':bool(ev.premium)?'Premium drop →':'Get ticket →'}</button>
+          </div></div>`;
+      }).join('');
+    }
+
+    /* ── Modal ────────────────────────────────────────────── */
+    function openModal(city,dates,venue){
+      document.getElementById('m-city').textContent=city;
+      document.getElementById('m-sub').textContent=`${dates} · ${venue}`;
+      document.getElementById('m-form').style.display='';
+      document.getElementById('m-ok').style.display='none';
+      document.getElementById('overlay').classList.add('open');
+    }
+    function closeModal(){document.getElementById('overlay').classList.remove('open');}
+    function overlayClick(e){if(e.target.id==='overlay')closeModal();}
+    function handleBuy(e){e.preventDefault();document.getElementById('m-form').style.display='none';document.getElementById('m-ok').style.display='';}
+
+    /* ── Init ─────────────────────────────────────────────── */
+    async function init(){
+      const raw=await loadCSV(CSV_PATH);
+      SEASON_DATA=(raw&&raw.length)?raw:SEASON_FALLBACK;
+      renderTimeline(SEASON_DATA,'all');
+      renderTickets(SEASON_DATA);
+    }
+    init();
+
+    /* ────────────────────────────────────────────────────────
+       LEGACY — kept only so old references don't break
+    ──────────────────────────────────────────────────────── */
     const SEASON = [
       // ─ PHASE 1: DACH + Benelux (past) ─
       { city:'MÜNCHEN',    ed:'01', dates:'06 — 08 · FEB 2026', venue:'MTC Halle',            past:true,  premium:false, img:'./assets/ref-1.png',
