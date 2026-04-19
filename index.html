@@ -13,14 +13,15 @@
 
   <style>
     :root {
-      --bg:     #0C0C0C;
-      --bg2:    #141414;
-      --bg3:    #1A1A1A;
-      --bone:   #EDE7DB;
+      --bg:     #EDE7DB;
+      --bg2:    #E3DDD1;
+      --bg3:    #D9D2C5;
+      --bone:   #1B2A3D;
       --red:    #C8321F;
-      --muted:  rgba(237,231,219,0.45);
-      --dim:    rgba(237,231,219,0.18);
-      --border: rgba(237,231,219,0.07);
+      --cream:  #EDE7DB;
+      --muted:  rgba(27,42,61,0.55);
+      --dim:    rgba(27,42,61,0.25);
+      --border: rgba(27,42,61,0.12);
       --ff-h:   'Heading Now', 'Arial Black', sans-serif;
       --ff-b:   'Inter', sans-serif;
     }
@@ -32,17 +33,32 @@
     a    { color: inherit; text-decoration: none; cursor: pointer; }
     button { cursor: pointer; border: none; background: none; }
 
+    /* ─── HEADING TYPOGRAPHY ──────────────────────────── */
+    .hero-h1, .a-h, .ev-h, .tk-h, .cd-city, .ev-city, .tk-city,
+    .cd-num, .city-banner-num, .f-brand {
+      letter-spacing: -0.035em;
+      line-height: 1.104;
+    }
+
+    /* ─── HERO TEXT (light cream on dark photo) ───────── */
+    .hero-tag, .hero-slogan, .slogan-word, .hero-h1,
+    .hs-n, .hs-l, .hero-cta { color: var(--cream) !important; }
+    .hero-stats { border-bottom-color: rgba(237,231,219,0.18) !important; }
+    .hero-cta { background: var(--red) !important; }
+    .hero-slogan { color: rgba(237,231,219,0.65) !important; }
+    .slogan-word { color: var(--red) !important; }
+
     /* ─── NAV ─────────────────────────────────────────── */
     nav {
       position: fixed; inset: 0 0 auto 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 36px; height: 56px;
-      background: rgba(12,12,12,0.92);
+      background: rgba(237,231,219,0.96);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-    .nav-logo img { height: 28px; width: auto; }
+    .nav-logo img { height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(14%) sepia(57%) saturate(567%) hue-rotate(185deg) brightness(90%); }
     .nav-brand {
       font-family: var(--ff-h); font-size: 15px; letter-spacing: 0.06em;
       color: var(--bone); text-transform: uppercase;
@@ -89,7 +105,7 @@
     .hero-content {
       position: relative; height: 100%;
       display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 48px 64px; max-width: 1440px; margin: 0 auto;
+      padding: 120px 48px 64px; max-width: 1440px; margin: 0 auto;
     }
     .hero-tag {
       font-size: 10px; font-weight: 700; letter-spacing: .32em;
@@ -130,9 +146,9 @@
     .ticker-item {
       font-family: var(--ff-h); font-size: 17px;
       letter-spacing: .08em; text-transform: uppercase;
-      color: var(--bone); padding: 0 28px; flex-shrink: 0;
+      color: var(--cream); padding: 0 28px; flex-shrink: 0;
     }
-    .ticker-sep { opacity: .45; }
+    .ticker-sep { display: none; }
     @keyframes scroll-ticker {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -203,7 +219,7 @@
 
     /* ─── SLOGAN BREAK ────────────────────────────────── */
     .slogan-break {
-      background: var(--bone); color: var(--bg);
+      background: var(--bone); color: var(--cream);
       padding: 48px 0; overflow: hidden;
     }
     .slogan-scroll {
@@ -211,7 +227,7 @@
       font-size: clamp(52px, 7vw, 96px);
       line-height: .9; letter-spacing: -.02em; text-transform: uppercase;
       white-space: nowrap; display: inline-block;
-      animation: scroll-slogan 22s linear infinite;
+      animation: scroll-slogan 31s linear infinite;
     }
     .slogan-scroll .accent { color: var(--red); }
     @keyframes scroll-slogan {
@@ -429,11 +445,11 @@
     .field-lbl { display: block; font-size: 9px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; opacity: .4; margin-bottom: 7px; }
     .field-input {
       display: block; width: 100%; padding: 11px 14px;
-      background: rgba(237,231,219,.05); border: 1px solid rgba(237,231,219,.1);
+      background: rgba(27,42,61,.05); border: 1px solid rgba(27,42,61,.18);
       color: var(--bone); font-family: var(--ff-b); font-size: 14px;
       outline: none; transition: border-color .2s;
     }
-    .field-input:focus { border-color: rgba(237,231,219,.3); }
+    .field-input:focus { border-color: rgba(27,42,61,.45); }
     .field-input::placeholder { opacity: .22; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .btn-submit {
@@ -471,7 +487,7 @@
       .ev-card, .ev-card.flip { grid-template-columns: 1fr; direction: ltr; }
       .ev-card.flip > * { direction: ltr; }
       .ev-img { min-height: 260px; }
-      .ev-img-grad, .ev-card.flip .ev-img-grad { background: linear-gradient(to bottom, transparent 60%, var(--bg2) 100%); }
+      .ev-img-grad, .ev-card.flip .ev-img-grad { background: linear-gradient(to bottom, transparent 55%, var(--bg2) 92%); }
       .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
       .photo-grid-item.tall { grid-row: span 1; }
     }
@@ -596,18 +612,16 @@
       </div>
       <div>
         <div class="a-label">Who we are</div>
-        <h2 class="a-h">Your parents'<br>closet. Today's<br>beats.</h2>
+        <h2 class="a-h">Your parents'<br>closet.<br>Today's scene.</h2>
         <div class="a-body">
-          <p>Billy's Tour is a youth collective throwing events where techno, rap, specialty coffee and vintage fashion share the same room.</p>
-          <p>Local artists. Hand-picked second-hand pieces. Fair entry. 34 stops. 24 cities. One mission.</p>
-          <p>We're not a festival. We're your friends throwing the party.</p>
+          <p>The cultural scene from your town in one place, just for 3 days. Oh, and more than 2,000 vintage pieces for just €10.</p>
         </div>
         <ul class="a-values">
-          <li>Vintage clothing · always €10/piece at every stop</li>
           <li>Local DJs + emerging rappers on every lineup</li>
-          <li>Local cafés and makers baked into every event</li>
+          <li>Graffiti artists, tattooers &amp; jewelers at every stop</li>
+          <li>Grillz creators, collectives &amp; makers in the building</li>
+          <li>2,000+ second-hand pieces · always €10/piece</li>
           <li>Real entry price — no markup, no asterisks</li>
-          <li>8 premium drops in Europe's underground capitals</li>
         </ul>
       </div>
     </section>
@@ -925,7 +939,7 @@
             </div>
             <div class="ev-desc">${s.desc}</div>
             <div class="ev-foot">
-              <div class="ev-price">TBD <small>/ ticket</small></div>
+              <div class="ev-price">From: <small>TBD</small></div>
               <button class="ev-btn"
                 ${s.past ? 'disabled' : `onclick="openModal('${s.city.replace(/'/g,"\\'")}','${s.dates}','${s.venue}')"`}
               >${s.past ? 'Sold out' : 'Get ticket →'}</button>
@@ -965,7 +979,7 @@
           </div>
           <hr class="tk-hr" />
           <div class="tk-price-row">
-            <div class="tk-price">TBD <small>/ ticket</small></div>
+            <div class="tk-price">From: <small>TBD</small></div>
           </div>
           <button class="tk-btn ${s.premium ? 'tk-premium-btn' : ''}"
             ${s.past ? 'disabled' : `onclick="openModal('${s.city.replace(/'/g,"\\'")}','${s.dates}','${s.venue}')"`}
